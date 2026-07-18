@@ -1,13 +1,15 @@
 schema_version: '1.0'
 id: SRC-NEXUSLUX-CONSTITUTION-V1-2
 project_id: nexuslux
-title: Constitución NexusLux v1.2
-origin: Documento ODT aportado y aprobado expresamente por Sebastián Portunato el 18 de julio de 2026.
+title: Constitución NexusLux v1.2 — paquete ODT íntegro
+origin: Documento ODT aportado por Sebastián Portunato y aprobado expresamente como
+  canon el 18 de julio de 2026. Se conserva sin pérdida mediante fragmentos Base64
+  reconstruibles.
 ingested_at: '2026-07-18T14:16:10Z'
 classification: public
-media_type: application/vnd.oasis.opendocument.text
-path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/canon(4).odt
-sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
-size_bytes: 113825
+media_type: application/yaml
+path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/manifest.yaml
+sha256: f6e541333a4ce9f2dbdf17c5248d7dbab5e9a409c507f087733e3c48af13628b
+size_bytes: 5680
 status: active
 links: []
