@@ -1,0 +1,13 @@
+schema_version: '1.0'
+id: SRC-NEXUSLUX-CONSTITUTION-V1-2
+project_id: nexuslux
+title: Constitución NexusLux v1.2
+origin: Documento ODT aportado y aprobado expresamente por Sebastián Portunato el 18 de julio de 2026.
+ingested_at: '2026-07-18T14:16:10Z'
+classification: public
+media_type: application/vnd.oasis.opendocument.text
+path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/canon(4).odt
+sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
+size_bytes: 113825
+status: active
+links: []
