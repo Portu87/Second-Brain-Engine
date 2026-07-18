@@ -1,6 +1,6 @@
 {
   "authority_model": "compiled-state",
-  "content_sha256": "6675d892643c174863f9b8ea3e30a03e0b811119b21d5727348801afb3af088c",
+  "content_sha256": "7ab964c95efdab7e55ba9721e614359aaaf8ec84d998562e50c43def627214d6",
   "decision_ids": [
     "DEC-NEXUSLUX-CONSTITUTION-V1-2"
   ],
@@ -24,11 +24,16 @@
       "value": {
         "authority_level": 1,
         "consultation_path": "knowledge/constitution-nexuslux-v1.2.md",
-        "document_path": "sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/canon(4).odt",
         "effective_date": "2026-07-18",
-        "incorporation": "The complete ODT document identified by this SHA-256 is incorporated by reference as the governing NexusLux constitution.",
-        "sha256": "adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d",
+        "incorporation": "El documento ODT completo identificado por el SHA-256 original queda incorporado por referencia como Constitución rectora de NexusLux.",
+        "original_filename": "canon(4).odt",
+        "original_media_type": "application/vnd.oasis.opendocument.text",
+        "original_sha256": "adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d",
+        "original_size_bytes": 113825,
+        "source_manifest": "sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/manifest.yaml",
+        "source_record": "sources/records/SRC-NEXUSLUX-CONSTITUTION-V1-2.yaml",
         "status": "canon-approved",
+        "storage_format": "lossless-base64-chunks",
         "title": "Constitución NexusLux",
         "version": "1.2"
       }
