@@ -8,7 +8,7 @@ from importlib.resources import files
 from pathlib import Path
 from typing import Any, cast
 
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, FormatChecker
 
 SCHEMA_FILES = {
     "project": "project.schema.json",
@@ -37,7 +37,7 @@ def load_schema(name: str) -> dict[str, Any]:
 
 def schema_errors(name: str, instance: dict[str, Any]) -> list[str]:
     """Return stable, human-readable schema failures."""
-    validator = Draft202012Validator(load_schema(name))
+    validator = Draft202012Validator(load_schema(name), format_checker=FormatChecker())
     errors = sorted(validator.iter_errors(instance), key=lambda item: list(item.absolute_path))
     messages: list[str] = []
     for error in errors:

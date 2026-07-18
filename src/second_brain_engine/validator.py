@@ -107,6 +107,14 @@ def _validate_sources(project_root: Path, sources: list[dict[str, Any]]) -> list
         path_value = source.get("path")
         source_id = str(source.get("id", "unknown"))
         record_path = str(source.get("_path", "unknown"))
+        if source.get("classification") == "prohibited":
+            findings.append(
+                _finding(
+                    "SECURITY.PROHIBITED_SOURCE",
+                    f"Source {source_id} is classified as prohibited and must not be stored",
+                    record_path,
+                )
+            )
         if not isinstance(path_value, str):
             continue
         if path_value.startswith("/") or ".." in Path(path_value).parts:
@@ -194,34 +202,50 @@ def _validate_traceability(
 def _validate_authority(project_root: Path, decisions: list[dict[str, Any]]) -> list[Finding]:
     findings: list[Finding] = []
     approved_ids = {item.get("id") for item in decisions if item.get("status") == "approved"}
-    supersedes: dict[str, str] = {}
+    all_decision_ids = {item.get("id") for item in decisions}
+    supersession_graph: dict[str, set[str]] = {}
     for decision in decisions:
-        superseded = decision.get("supersedes", [])
-        for prior in superseded:
-            if prior not in approved_ids and prior not in {item.get("id") for item in decisions}:
+        decision_id = decision.get("id")
+        if not isinstance(decision_id, str):
+            continue
+        prior_ids = {str(prior) for prior in decision.get("supersedes", [])}
+        supersession_graph[decision_id] = prior_ids
+        for prior in prior_ids:
+            if prior not in all_decision_ids:
                 findings.append(
                     _finding(
                         "AUTH.SUPERSEDED_DECISION_MISSING",
-                        f"Decision {decision.get('id')} supersedes missing decision {prior}",
+                        f"Decision {decision_id} supersedes missing decision {prior}",
                         str(decision.get("_path")),
                     )
                 )
-            supersedes[str(decision.get("id"))] = str(prior)
 
-    for start in supersedes:
-        seen: set[str] = set()
-        current = start
-        while current in supersedes:
-            if current in seen:
+    visiting: set[str] = set()
+    visited: set[str] = set()
+    reported_cycles: set[str] = set()
+
+    def visit(decision_id: str) -> None:
+        if decision_id in visited:
+            return
+        if decision_id in visiting:
+            if decision_id not in reported_cycles:
                 findings.append(
                     _finding(
                         "AUTH.SUPERSESSION_CYCLE",
-                        f"Decision supersession cycle at {current}",
+                        f"Decision supersession cycle includes {decision_id}",
                     )
                 )
-                break
-            seen.add(current)
-            current = supersedes[current]
+                reported_cycles.add(decision_id)
+            return
+        visiting.add(decision_id)
+        for prior in supersession_graph.get(decision_id, set()):
+            if prior in supersession_graph:
+                visit(prior)
+        visiting.remove(decision_id)
+        visited.add(decision_id)
+
+    for decision_id in sorted(supersession_graph):
+        visit(decision_id)
 
     try:
         expected = build_snapshot(project_root)
