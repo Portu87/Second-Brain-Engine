@@ -66,6 +66,12 @@ history/
 config/
 ```
 
+## Registered project instances
+
+- [`projects/nexuslux`](projects/nexuslux/) — NexusLux project with Constitution v1.2 preserved as an immutable source, approved by a human decision, and compiled into canonical state.
+
+Project instances contain domain records and remain separate from the generic engine source code. CI validates every registered project on each pull request and push to `main`.
+
 ## Ingest immutable evidence
 
 ```bash
