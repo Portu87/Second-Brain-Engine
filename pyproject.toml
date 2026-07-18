@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "second-brain-engine"
+version = "0.1.0"
+description = "A project-agnostic, validated, event-sourced engine for trustworthy second brains."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Second Brain Engine contributors"}]
+keywords = ["knowledge-management", "second-brain", "event-sourcing", "validation", "provenance"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dependencies = [
+  "PyYAML>=6.0.2,<7",
+  "jsonschema>=4.23,<5",
+  "rfc3339-validator>=0.1.4,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<7",
+  "ruff>=0.11,<1",
+  "mypy>=1.15,<2",
+  "types-PyYAML>=6.0.12.20241230",
+  "types-jsonschema>=4.23.0.20241208",
+]
+
+[project.scripts]
+sbe = "second_brain_engine.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/second_brain_engine"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"schemas" = "second_brain_engine/schemas"
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["second_brain_engine"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
+packages = ["second_brain_engine"]
