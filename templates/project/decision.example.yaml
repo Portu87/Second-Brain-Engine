@@ -1,0 +1,21 @@
+schema_version: "1.0"
+id: DEC-EXAMPLE-001
+project_id: example-project
+title: Example approved decision
+status: approved
+decided_at: "2026-01-01T00:00:00Z"
+effective_from: "2026-01-01T00:00:00Z"
+approved_by: project-owner
+source_ids:
+  - SRC-EXAMPLE-001
+rationale: Replace this with the evidence-based reason for the decision.
+operations:
+  - op: upsert_rule
+    rule:
+      rule_id: example.entity.field
+      entity: example
+      field: field
+      value: replace-me
+      scope: global
+supersedes: []
+links: []
