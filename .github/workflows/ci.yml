@@ -65,20 +65,35 @@ jobs:
       - name: Validate registered projects
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          mkdir -p project-diagnostics
           found=0
+          status=0
           for project in projects/*; do
             if [[ -f "$project/project.yaml" ]]; then
               found=1
-              sbe validate "$project"
+              project_name="$(basename "$project")"
+              if ! sbe validate "$project" --json 2>&1 | tee "project-diagnostics/${project_name}-validation.json"; then
+                status=1
+              fi
               if [[ -f "$project/config/verify-source.sh" ]]; then
-                bash "$project/config/verify-source.sh"
+                if ! bash "$project/config/verify-source.sh" 2>&1 | tee "project-diagnostics/${project_name}-source-verification.log"; then
+                  status=1
+                fi
               fi
             fi
           done
           if [[ "$found" -eq 0 ]]; then
             echo "No registered project instances found."
           fi
+          exit "$status"
+      - name: Upload project diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-diagnostics
+          path: project-diagnostics/
+          if-no-files-found: warn
 
   package:
     name: Build package
