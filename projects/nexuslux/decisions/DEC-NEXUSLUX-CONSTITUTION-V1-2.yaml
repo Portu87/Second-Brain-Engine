@@ -1,0 +1,33 @@
+schema_version: '1.0'
+id: DEC-NEXUSLUX-CONSTITUTION-V1-2
+project_id: nexuslux
+title: Approve NexusLux Constitution v1.2 as governing canon
+status: approved
+decided_at: '2026-07-18T14:16:10Z'
+effective_from: '2026-07-18T14:16:10Z'
+approved_by: Sebastián Portunato
+source_ids:
+- SRC-NEXUSLUX-CONSTITUTION-V1-2
+rationale: Sebastián Portunato explicitly decided that the complete uploaded Constitution NexusLux version 1.2 is approved and enters the canonical state of the NexusLux project. The raw source remains immutable; the compiled rule incorporates the complete document by its registered path and SHA-256 digest.
+operations:
+- op: upsert_rule
+  rule:
+    rule_id: governance.constitution.nexuslux
+    entity: governance
+    field: constitution
+    value:
+      title: Constitución NexusLux
+      version: '1.2'
+      status: canon-approved
+      effective_date: '2026-07-18'
+      authority_level: 1
+      document_path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/canon(4).odt
+      consultation_path: knowledge/constitution-nexuslux-v1.2.md
+      sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
+      incorporation: The complete ODT document identified by this SHA-256 is incorporated by reference as the governing NexusLux constitution.
+    scope: nexuslux-global
+    status: active
+    effective_from: '2026-07-18T14:16:10Z'
+    links: []
+supersedes: []
+links: []
