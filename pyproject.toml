@@ -23,6 +23,7 @@ classifiers = [
 dependencies = [
   "PyYAML>=6.0.2,<7",
   "jsonschema>=4.23,<5",
+  "rfc3339-validator>=0.1.4,<1",
 ]
 
 [project.optional-dependencies]
