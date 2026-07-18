@@ -49,6 +49,37 @@ jobs:
             coverage.xml
           if-no-files-found: warn
 
+  projects:
+    name: Validate project instances
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install engine
+        run: python -m pip install --upgrade pip && python -m pip install -e .
+      - name: Validate registered projects
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
+          for project in projects/*; do
+            if [[ -f "$project/project.yaml" ]]; then
+              found=1
+              sbe validate "$project"
+              if [[ -f "$project/config/verify-source.sh" ]]; then
+                bash "$project/config/verify-source.sh"
+              fi
+            fi
+          done
+          if [[ "$found" -eq 0 ]]; then
+            echo "No registered project instances found."
+          fi
+
   package:
     name: Build package
     runs-on: ubuntu-latest
