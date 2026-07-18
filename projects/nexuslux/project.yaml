@@ -1,0 +1,10 @@
+schema_version: '1.0'
+project_id: nexuslux
+name: NexusLux
+language: es
+status: active
+authority_model: compiled-state
+confidentiality_default: public
+root_nodes:
+- DEC-NEXUSLUX-CONSTITUTION-V1-2
+created_at: '2026-07-18T14:16:10Z'
