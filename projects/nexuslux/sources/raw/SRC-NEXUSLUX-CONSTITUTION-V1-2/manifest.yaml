@@ -1,0 +1,35 @@
+schema_version: '1.0'
+package_id: SRC-NEXUSLUX-CONSTITUTION-V1-2
+title: Constitución NexusLux v1.2
+original_filename: canon(4).odt
+original_media_type: application/vnd.oasis.opendocument.text
+original_sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
+original_size_bytes: 113825
+encoding: base64
+concatenation_order:
+- SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-001
+- SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-002
+- SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-003
+- SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-004
+parts:
+- index: 1
+  source_id: SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-001
+  path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/parts/canon(4).odt.b64.part-001
+  sha256: 955fed82dfff1bd74d7144fce4751ea93d16d2b5aa1e1140f099ad509184d49a
+  size_bytes: 50000
+- index: 2
+  source_id: SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-002
+  path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/parts/canon(4).odt.b64.part-002
+  sha256: 0d91c38ba3a3cfd72682cfb618e2dfb51051017b6819a78f50f6a403451def45
+  size_bytes: 50000
+- index: 3
+  source_id: SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-003
+  path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/parts/canon(4).odt.b64.part-003
+  sha256: fc23de2f154607ea07e50faba2be1155fc55e1d1f827e610d88bbe0727940c43
+  size_bytes: 50000
+- index: 4
+  source_id: SRC-NEXUSLUX-CONSTITUTION-V1-2-PART-004
+  path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/parts/canon(4).odt.b64.part-004
+  sha256: 8d279d9385883a6e34408d7b4b39afc218c399ed93dd387a19d51dfac058e302
+  size_bytes: 1768
+reconstruction: Concatenate part files in index order and base64-decode the result.
