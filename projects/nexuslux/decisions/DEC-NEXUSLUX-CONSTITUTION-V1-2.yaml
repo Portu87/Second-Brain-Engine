@@ -1,14 +1,17 @@
 schema_version: '1.0'
 id: DEC-NEXUSLUX-CONSTITUTION-V1-2
 project_id: nexuslux
-title: Approve NexusLux Constitution v1.2 as governing canon
+title: Aprobar la Constitución NexusLux v1.2 como canon rector
 status: approved
 decided_at: '2026-07-18T14:16:10Z'
 effective_from: '2026-07-18T14:16:10Z'
 approved_by: Sebastián Portunato
 source_ids:
 - SRC-NEXUSLUX-CONSTITUTION-V1-2
-rationale: Sebastián Portunato explicitly decided that the complete uploaded Constitution NexusLux version 1.2 is approved and enters the canonical state of the NexusLux project. The raw source remains immutable; the compiled rule incorporates the complete document by its registered path and SHA-256 digest.
+rationale: Sebastián Portunato decidió expresamente que el documento completo Constitución
+  NexusLux v1.2 entra en vigor como canon rector. La fuente se conserva de manera
+  inmutable y reconstruible; el estado compilado incorpora el ODT completo por referencia
+  a su manifiesto y a su SHA-256 original.
 operations:
 - op: upsert_rule
   rule:
@@ -21,10 +24,16 @@ operations:
       status: canon-approved
       effective_date: '2026-07-18'
       authority_level: 1
-      document_path: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/canon(4).odt
+      source_record: sources/records/SRC-NEXUSLUX-CONSTITUTION-V1-2.yaml
+      source_manifest: sources/raw/SRC-NEXUSLUX-CONSTITUTION-V1-2/manifest.yaml
       consultation_path: knowledge/constitution-nexuslux-v1.2.md
-      sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
-      incorporation: The complete ODT document identified by this SHA-256 is incorporated by reference as the governing NexusLux constitution.
+      original_filename: canon(4).odt
+      original_media_type: application/vnd.oasis.opendocument.text
+      original_sha256: adc2dd18e9a5cf2f3b9fd63dac32e6859d878185b29506b420c3fcdccd25936d
+      original_size_bytes: 113825
+      storage_format: lossless-base64-chunks
+      incorporation: El documento ODT completo identificado por el SHA-256 original
+        queda incorporado por referencia como Constitución rectora de NexusLux.
     scope: nexuslux-global
     status: active
     effective_from: '2026-07-18T14:16:10Z'
